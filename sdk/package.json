@@ -1,0 +1,13 @@
+{
+  "name": "@facilitator-network/sdk",
+  "version": "0.1.0",
+  "description": "A minimal TypeScript client for interacting with the Facilitator Network on BNB",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": ["facilitator", "payment", "402", "bnb", "eip-2612", "permit"],
+  "author": "Facilitator Network",
+  "license": "MIT"
+}
