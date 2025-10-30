@@ -1,13 +1,23 @@
-# Facora Core
+<p align="center">
+  <img src="assets/facora-banner.png" alt="Facora banner" />
+</p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue)](https://www.typescriptlang.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-14.0-black)](https://nextjs.org/)
-[![BNB Chain](https://img.shields.io/badge/BNB%20Chain-Testnet-yellow)](https://testnet.bscscan.com/)
+<h1 align="center">Facora Core</h1>
 
-![Facora Banner](assets/facora-banner.png)
+<p align="center">The bonded facilitator layer for x402 payments on BNB Chain.</p>
 
-**The bonded facilitator layer for x402 payments on BNB Chain.**
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.2-blue" alt="TypeScript" /></a>
+  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-14.0-black" alt="Next.js" /></a>
+  <a href="https://testnet.bscscan.com/"><img src="https://img.shields.io/badge/BNB%20Chain-Testnet-yellow" alt="BNB Chain" /></a>
+</p>
+
+<p align="center">
+  Website: <a href="https://facora.org/">https://facora.org/</a> • X: <a href="https://x.com/facora1">https://x.com/facora1</a>
+</p>
+
+---
 
 Facora enables gasless pay-per-request payments for APIs and AI agents. APIs return HTTP 402, users sign a permit (no gas), and a facilitator settles on-chain in USDx.
 
