@@ -14,7 +14,13 @@
 </p>
 
 <p align="center">
-  Website: <a href="https://facora.org/">https://facora.org/</a> • X: <a href="https://x.com/facora1">https://x.com/facora1</a>
+  <a href="https://facora.org/" style="color:#1d4ed8;text-decoration:underline;font-weight:600;">
+    🌐 Website
+  </a>
+  &nbsp;•&nbsp;
+  <a href="https://x.com/facora1" style="color:#1d4ed8;text-decoration:underline;font-weight:600;">
+    𝕏 Facora1
+  </a>
 </p>
 
 ---
