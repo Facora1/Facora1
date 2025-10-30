@@ -23,19 +23,15 @@
   </a>
 </p>
 
----
-
-Facora enables gasless pay-per-request payments for APIs and AI agents. APIs return HTTP 402, users sign a permit (no gas), and a facilitator settles on-chain in USDx.
-
-## What This Solves
-
-Traditional x402 flows have a **single point of failure**: one facilitator goes down, all payments stop.
-
-Facora creates a **marketplace of facilitators** that compete on fees and uptime. If one fails, clients automatically try the next. Facilitators stake FAC tokens and get slashed if they cheat.
-
-## Architecture
-
-\`\`\`
+<p align="center"><strong>Facora enables gasless pay-per-request payments for APIs and AI agents. APIs return HTTP 402, users sign a permit (no gas), and a facilitator settles on-chain in USDx.</strong></p>
+- `contracts/` — Smart contracts (USDx, FacoraBondRegistry)
+- `operator/` — Facilitator implementations (Alpha, Beta, Gamma)
+  - `core/` — Shared modules (settlement, permit verification, slash detection)
+  - `alpha/` — Alpha facilitator (live on BNB testnet)
+  - `beta/` — Beta facilitator (coming soon)
+- `sdk/` — Client SDK for developers
+- `examples/` — Drop-in merchant API examples
+- `explorer-api/` — Public stats and settlement history endpoints
 /contracts          Smart contracts (USDx, FacoraBondRegistry)
 /operator           Facilitator implementations (Alpha, Beta, Gamma)
   /core             Shared modules (settlement, permit verification, slash detection)
