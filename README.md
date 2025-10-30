@@ -1,10 +1,8 @@
-<p align="center">
+﻿<p align="center">
   <img src="assets/facora-banner.png" alt="Facora banner" />
 </p>
 
 <h1 align="center">Facora Core</h1>
-
-<p align="center">The bonded facilitator layer for x402 payments on BNB Chain.</p>
 
 <p align="center">
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
@@ -13,34 +11,17 @@
   <a href="https://testnet.bscscan.com/"><img src="https://img.shields.io/badge/BNB%20Chain-Testnet-yellow" alt="BNB Chain" /></a>
 </p>
 
-<p align="center">
-  <a href="https://facora.org/" style="color:#1d4ed8;text-decoration:underline;font-weight:600;">
-    🌐 Website
+<p align="center" style="font-weight:600;">
+  <a href="https://facora.org/" style="color:#1d4ed8;text-decoration:underline;">
+    <span style="margin-right:6px;">&#127760;</span>Website
   </a>
   &nbsp;•&nbsp;
-  <a href="https://x.com/facora1" style="color:#1d4ed8;text-decoration:underline;font-weight:600;">
-    𝕏 Facora1
+  <a href="https://x.com/facora1" style="color:#1d4ed8;text-decoration:underline;">
+    <span style="margin-right:6px;">&#120143;</span>X (Facora1)
   </a>
 </p>
 
-<p align="center"><strong>Facora enables gasless pay-per-request payments for APIs and AI agents. APIs return HTTP 402, users sign a permit (no gas), and a facilitator settles on-chain in USDx.</strong></p>
-- `contracts/` — Smart contracts (USDx, FacoraBondRegistry)
-- `operator/` — Facilitator implementations (Alpha, Beta, Gamma)
-  - `core/` — Shared modules (settlement, permit verification, slash detection)
-  - `alpha/` — Alpha facilitator (live on BNB testnet)
-  - `beta/` — Beta facilitator (coming soon)
-- `sdk/` — Client SDK for developers
-- `examples/` — Drop-in merchant API examples
-- `explorer-api/` — Public stats and settlement history endpoints
-/contracts          Smart contracts (USDx, FacoraBondRegistry)
-/operator           Facilitator implementations (Alpha, Beta, Gamma)
-  /core             Shared modules (settlement, permit verification, slash detection)
-  /alpha            Alpha facilitator (live on BNB testnet)
-  /beta             Beta facilitator (coming soon)
-/sdk                Client SDK for developers
-/examples           Drop-in merchant API examples
-/explorer-api       Public stats and settlement history endpoints
----
+# Facora Core
 
 **The bonded facilitator layer for x402 payments on BNB Chain.**
 
@@ -64,15 +45,34 @@ Facora creates a **marketplace of facilitators** that compete on fees and uptime
 /examples           Drop-in merchant API examples
 /explorer-api       Public stats and settlement history endpoints
 ```
+
+## Live Proof (BNB Testnet)
+
+- **USDx Token**: `0xcfFA309a5Fb3ac7419eBC8Ba4a6063Ff2a7585F5` ([View on BscScan](https://testnet.bscscan.com/token/0xcfFA309a5Fb3ac7419eBC8Ba4a6063Ff2a7585F5))
+- **Facilitator Alpha**: `0x1437fE0f155b910dda7A80c64b57C1460793641F`
+- **Merchant Address**: `0x183052a3526d2ebd0f8dd7a90bed2943e0126795`
+
+All settlements are verifiable on-chain. No mocks, no simulations.
+
+## How It Works
+
+### 1. Merchant protects an endpoint
+
+```typescript
+// Return 402 with facilitator list
+return new Response(JSON.stringify({
+  price: "1000000",  // 1 USDx
+  asset: "0xcfFA309a5Fb3ac7419eBC8Ba4a6063Ff2a7585F5",
+  facilitators: [
     { name: "Alpha", url: "https://api.facora.network/alpha", feeBps: 50 },
     { name: "Beta", url: "https://api.facora.network/beta", feeBps: 100 }
   ]
 }), { status: 402 })
-\`\`\`
+```
 
 ### 2. Client pays via SDK
 
-\`\`\`typescript
+```typescript
 import { payAndRequest } from '@facora/sdk'
 
 const result = await payAndRequest({
@@ -83,7 +83,7 @@ const result = await payAndRequest({
 
 console.log(result.data)              // Unlocked content
 console.log(result.settlement.txHash) // On-chain proof
-\`\`\`
+```
 
 ### 3. Facilitator settles on-chain
 
@@ -95,7 +95,7 @@ console.log(result.settlement.txHash) // On-chain proof
 
 ### 4. Merchant verifies and unlocks
 
-\`\`\`typescript
+```typescript
 import { verifySettlement } from '@facora/examples'
 
 const isValid = await verifySettlement(
@@ -107,7 +107,7 @@ const isValid = await verifySettlement(
 if (isValid) {
   return { status: 200, data: secretContent }
 }
-\`\`\`
+```
 
 ## Quick Start
 
@@ -130,11 +130,11 @@ See `/operator/README.md` for setup guide.
 
 ### For Developers (SDK Users)
 
-\`\`\`bash
+```bash
 npm install @facora/sdk
-\`\`\`
+```
 
-\`\`\`typescript
+```typescript
 import { payAndRequest } from '@facora/sdk'
 
 const result = await payAndRequest({
@@ -142,7 +142,7 @@ const result = await payAndRequest({
   userWallet: wallet,
   tokenAddress: usdxAddress
 })
-\`\`\`
+```
 
 See `/sdk/README.md` for full documentation.
 
@@ -154,13 +154,13 @@ See `/sdk/README.md` for full documentation.
 - SDK for client integration
 - Merchant API examples
 
-### 🚧 Phase 2: Facilitator Marketplace (Q4 2025)
+### 🚧 Phase 2: Facilitator Marketplace (Q2 2025)
 - Permissionless facilitator registration
 - FAC token staking and slashing
 - Beta and Gamma facilitators go live
 - Reputation system
 
-### 🔮 Phase 3: Production Ready (Q4 2025)
+### 🔮 Phase 3: Production Ready (Q3 2025)
 - Multi-token support (USDT, USDC)
 - Cross-chain settlements
 - Batch payments for high-volume APIs
