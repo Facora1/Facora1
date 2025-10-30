@@ -41,13 +41,11 @@ export async function POST(request: Request) {
       // EIP-2612 permit flow: user signed off-chain, Alpha settles on-chain
       const { owner, value, deadline, v, r, s } = body
 
-      console.log("[v0] Processing permit-based payment from", owner)
 
       // Execute permit to approve Alpha to spend from owner's balance
       const permitTx = await usdx.permit(owner, wallet.address, value, deadline, v, r, s)
       await permitTx.wait()
 
-      console.log("[v0] Permit executed, Alpha is now approved to spend", value, "from", owner)
 
       // Calculate fee (0.5% = 50 basis points)
       const valueBigInt = BigInt(value)
@@ -92,8 +90,6 @@ export async function POST(request: Request) {
         { status: 200 },
       )
     } else {
-      // Legacy flow: Alpha pays from its own balance (backwards compatibility)
-      console.log("[v0] Processing legacy transfer from Alpha's balance")
 
       const amount = ethers.parseUnits("1", Number(decimals))
 
@@ -148,7 +144,6 @@ export async function POST(request: Request) {
       )
     }
   } catch (error) {
-    console.error("[v0] Alpha facilitator error:", error)
     return NextResponse.json(
       { error: "Settlement failed", details: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },

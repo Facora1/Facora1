@@ -1,6 +1,6 @@
-# @facilitator-network/sdk
+# @facora/sdk
 
-A minimal TypeScript client for interacting with the Facilitator Network on BNB.
+A minimal TypeScript client for interacting with the Facora on BNB.
 
 ## What it does
 
@@ -16,7 +16,7 @@ A minimal TypeScript client for interacting with the Facilitator Network on BNB.
 
 ## Installation
 
-This SDK is included inline in this repository for now. It will be published to npm as `@facilitator-network/sdk`.
+This SDK is included inline in this repository for now. It will be published to npm as `@facora/sdk`.
 
 For now, you can:
 - Clone this repo and import from `./sdk/src`
@@ -26,7 +26,7 @@ For now, you can:
 ## Usage
 
 \`\`\`typescript
-import { payAndRequest } from "@facilitator-network/sdk";
+import { payAndRequest } from "@facora/sdk";
 
 const result = await payAndRequest({
   resourceUrl: "http://localhost:3000/api/alpha-feed"
@@ -66,7 +66,7 @@ console.log(result.settlement.facilitator);
 
 ## Architecture
 
-The Facilitator Network removes the single point of failure in traditional x402 flows. Instead of one centralized facilitator, multiple operators compete to settle payments. Each facilitator stakes FAC tokens and can be slashed for misbehavior.
+The Facora removes the single point of failure in traditional x402 flows. Instead of one centralized facilitator, multiple operators compete to settle payments. Each facilitator stakes FAC tokens and can be slashed for misbehavior.
 
 **Alpha is live on BNB testnet. Beta and Gamma are coming online soon.**
 

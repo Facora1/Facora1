@@ -70,7 +70,6 @@ export async function POST(request: Request) {
       { status: 200 },
     )
   } catch (error) {
-    console.error("[v0] Beta facilitator error:", error)
     return NextResponse.json(
       { error: "Settlement failed", details: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
