@@ -2,8 +2,6 @@
   <img src="assets/facora-banner.png" alt="Facora banner" />
 </p>
 
-<h1 align="center">Facora Core</h1>
-
 <p align="center">
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.2-blue" alt="TypeScript" /></a>
@@ -154,13 +152,13 @@ See `/sdk/README.md` for full documentation.
 - SDK for client integration
 - Merchant API examples
 
-### 🚧 Phase 2: Facilitator Marketplace (Q2 2025)
+### 🚧 Phase 2: Facilitator Marketplace
 - Permissionless facilitator registration
 - FAC token staking and slashing
 - Beta and Gamma facilitators go live
 - Reputation system
 
-### 🔮 Phase 3: Production Ready (Q3 2025)
+### 🔮 Phase 3: Production Ready
 - Multi-token support (USDT, USDC)
 - Cross-chain settlements
 - Batch payments for high-volume APIs
