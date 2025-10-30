@@ -40,26 +40,30 @@
 /sdk                Client SDK for developers
 /examples           Drop-in merchant API examples
 /explorer-api       Public stats and settlement history endpoints
-\`\`\`
+---
 
-## Live Proof (BNB Testnet)
+**The bonded facilitator layer for x402 payments on BNB Chain.**
 
-- **USDx Token**: `0xcfFA309a5Fb3ac7419eBC8Ba4a6063Ff2a7585F5` ([View on BscScan](https://testnet.bscscan.com/token/0xcfFA309a5Fb3ac7419eBC8Ba4a6063Ff2a7585F5))
-- **Facilitator Alpha**: `0x1437fE0f155b910dda7A80c64b57C1460793641F`
-- **Merchant Address**: `0x183052a3526d2ebd0f8dd7a90bed2943e0126795`
+Facora enables gasless pay-per-request payments for APIs and AI agents. APIs return HTTP 402, users sign a permit (no gas), and a facilitator settles on-chain in USDx.
 
-All settlements are verifiable on-chain. No mocks, no simulations.
+## What This Solves
 
-## How It Works
+Traditional x402 flows have a **single point of failure**: one facilitator goes down, all payments stop.
 
-### 1. Merchant protects an endpoint
+Facora creates a **marketplace of facilitators** that compete on fees and uptime. If one fails, clients automatically try the next. Facilitators stake FAC tokens and get slashed if they cheat.
 
-\`\`\`typescript
-// Return 402 with facilitator list
-return new Response(JSON.stringify({
-  price: "1000000",  // 1 USDx
-  asset: "0xcfFA309a5Fb3ac7419eBC8Ba4a6063Ff2a7585F5",
-  facilitators: [
+## Architecture
+
+```
+/contracts          Smart contracts (USDx, FacoraBondRegistry)
+/operator           Facilitator implementations (Alpha, Beta, Gamma)
+  /core             Shared modules (settlement, permit verification, slash detection)
+  /alpha            Alpha facilitator (live on BNB testnet)
+  /beta             Beta facilitator (coming soon)
+/sdk                Client SDK for developers
+/examples           Drop-in merchant API examples
+/explorer-api       Public stats and settlement history endpoints
+```
     { name: "Alpha", url: "https://api.facora.network/alpha", feeBps: 50 },
     { name: "Beta", url: "https://api.facora.network/beta", feeBps: 100 }
   ]
